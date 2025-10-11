@@ -62,8 +62,7 @@ Aspiring engineering student with a strong foundation in organic chemistry and b
 ---
 
 #### Achievements & Certifications
-- [Certification Name], [Issuing Organization], [Year]  
-- [Achievement Name], [Competition/Event], [Year]  
+- [Silver Medalist], [USACO], [2023]  
 
 ---
 
