@@ -8,11 +8,11 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : Your Name
+title                    : Vicente Xia Tang
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : Your Name
-description              : Your Name - Projects and CV 
+name                     : Vicente Xia Tang
+description              : Vicente Xia Tang - Projects and CV 
 baseurl                  : "" # Set this to your repo name 
 
 # Theme and Style

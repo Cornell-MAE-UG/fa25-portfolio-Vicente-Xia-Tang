@@ -1,6 +1,6 @@
 ---
 layout: default
-title: <Your Name> - Portfolio
+title: <Vicente Xia Tang> - Portfolio
 permalink: /projects/
 ---
 
