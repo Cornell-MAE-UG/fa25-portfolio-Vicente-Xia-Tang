@@ -1,171 +1,187 @@
 ---
 layout: project
-title: Bar Lifting Mechanism Design
-description: Static equilibrium–based mechanism design for lifting within a constrained 150 cm × 50 cm workspace.
-technologies: [Mechanism Design, Statics, CAD, Actuators]
+title: Lifting Mechanism Design
+description: A complete lifting mechanism design beginning with rigid-body statics and concluding with flexible-beam structural optimization.
+technologies: [Mechanism Design, Statics, Structural Analysis, Beam Theory, Materials, CAD]
 image: /assets/images/step1-mech.png
 ---
 
+# Overview
+
+This project develops a 2D lifting mechanism that must operate within a **150 cm × 50 cm** design envelope.  
+The mechanism uses:
+
+- One bar (initially treated as rigid)
+- Three pin joints, two attached to ground
+- A Tolomatic linear actuator (IMA55 series)
+- Rigid joints and ideal actuator behavior  
+
+The design progresses in two stages:
+
+1. **Rigid-body static analysis** to determine optimal geometry and theoretical lifting capacity.  
+2. **Flexible-beam analysis** to account for deformation, compute stiffness requirements, and select an efficient structural cross-section.
+
+Both steps are integrated into one continuous mechanism design.
+
+---
+
+# Step 1 — Rigid-Bar Mechanism Design
+
 ## Problem Definition
 
-The objective for Step 1 is to design a 2D lifting mechanism inside a **150 cm × 50 cm** design space using:
+The objective is to lift the **maximum possible weight** to the **greatest achievable height** within a 50 cm vertical constraint. The mechanism geometry is defined as follows:
 
-- A rigid bar of fixed length
-- Three pin supports, two of which must be grounded
-- A linear actuator chosen from the Tolomatic online catalog (using only maximum force values)
-- Rigid supports and rigid actuator assumptions
+- Bar length: **50 cm**  
+- Ground pin locations:
+  - **P1 = (0 cm, 0 cm)**
+  - **P2 = (35 cm, 0 cm)**
+- Actuator–bar joint:
+  - **P3 = midpoint of the bar (25 cm from P1)**  
+- Selected actuator: **Tolomatic IMA55**, maximum thrust approx. **35.8 kN**
 
-The goal is to lift the **maximum possible weight** to the **highest reachable height** within the vertical constraint.
+This configuration provides high leverage and allows the bar tip to sweep the full height limit.
 
-For this design, I selected the **Tolomatic IMA55 (roller screw RN05, 3-stack motor)**, which provides a **maximum thrust of about 35.8 kN**.
-
-## Constraints & Objectives
-
-**Geometric constraints**
-
-- Workspace: 150 cm (width) × 50 cm (height)
-- Bar length: **L = 50 cm**
-- Ground pins:
-  - P1 = (0 cm, 0 cm)
-  - P2 = (35 cm, 0 cm)
-- Actuator–bar joint: P3 at the midpoint of the bar (25 cm from P1)
-
-**Objectives**
-
-1. Maximize lifted load capacity  
-2. Reach the maximum feasible vertical elevation of the bar tip  
-3. Maintain a **single degree of freedom** driven by actuator extension  
+---
 
 ## Degrees of Freedom
 
-The system consists of:
+The system contains three rigid bodies:
 
-- The ground
-- One rigid bar
-- One two-force actuator
+- Ground  
+- A rigid bar  
+- A two-force actuator  
 
 Pin joints:
 
-- P1: ground ↔ bar  
-- P2: ground ↔ actuator  
-- P3: bar ↔ actuator  
+- P1: bar ↔ ground  
+- P2: actuator ↔ ground  
+- P3: actuator ↔ bar  
 
-Because the actuator length is the only independent input, the mechanism has **1 DOF**.
+Since the actuator length is the only independently controlled variable, the mechanism has **1 degree of freedom**.
+
+---
 
 ## Static Analysis (Rigid-Bar Assumption)
 
-The actuator applies force at mid-span of the bar.
+Key distances:
 
-Ratio of the lever arms:
+- Distance from P1 to actuator joint (P3): **a = 25 cm**  
+- Distance from P1 to bar tip: **L = 50 cm**
 
-- \( a = 25\ \text{cm} \) (distance from P1 to P3)  
-- \( L = 50\ \text{cm} \) (distance from P1 to bar tip)  
-- So: **a / L = 25 / 50 = 0.5**
+Ratio:
 
-Taking moments about the pivot P1:
+- a / L = 25 / 50 = **0.5**
 
-- Actuator moment: \( F_a \times a \)  
-- Load moment: \( W \times L \)
+Moments about the pivot P1:
 
-Static equilibrium gives:
+- Actuator moment = (actuator force) × a  
+- Load moment = (lifted weight) × L  
 
-- \( F_a \times a = W \times L \)
+Equilibrium requires:
 
-So the maximum supported load is
+- actuator force × a = W × L  
 
-- \( W_{\max} = (a / L) \times F_a = 0.5 \times 35.8\ \text{kN} \)
-- **\( W_{\max} \approx 17.9\ \text{kN} \)**
+Solving for the maximum load:
 
-This corresponds to lifting approximately **1.8 metric tons**, assuming the bar is perfectly rigid.
+- W_max = (a / L) × actuator force  
+- W_max = 0.5 × 35.8 kN  
+- **W_max ≈ 17.9 kN**
 
-## Final Mechanism Design
+This corresponds to lifting roughly **1.8 metric tons** under ideal rigid-bar behavior.
 
-Below is the final schematic used for Step 1:
-<img src="/assets/images/step1-mech.png" alt="Final Step 1 Mechanism" />
+---
 
-Now,let's consider when the bar **ISN'T** rigid:
+## Final Rigid Mechanism (Step 1)
 
-## Problem Definition
+![Rigid-Bar Mechanism](/assets/images/step1-mech.png)
 
-In Step 2, the rigid bar from Step 1 is treated as a **flexible beam** that bends under load.  
-The goals are to:
+This establishes the geometry used in Step 2.
 
-1. Compute the maximum deflection under transverse loading  
-2. Ensure the beam’s vertical tip deflection is **below 2% of its length**  
-3. Select a **mass-efficient beam cross-section** that meets this stiffness requirement  
-4. Present a finalized beam design drawing
+---
 
-The mechanism geometry (pin locations and actuator position) is kept the same as in Step 1.
+# Step 2 — Flexible Beam Structural Analysis
+
+The bar now behaves as a **beam that deflects under load**, requiring a structural analysis to ensure it meets a 2% deflection limit.
 
 ## Assumptions
 
-- Beam length: **L = 0.50 m**
-- Cantilever configuration: fixed at P1, free at the tip  
-- Dominant transverse load is the lifted weight: **P ≈ W = 17.9 kN**  
-- Material: **steel**, with elastic modulus **E = 200 GPa**  
-- Maximum allowable deflection at the tip: **δ_max ≤ 0.01 m (2% of L)**  
-- Small-deflection Euler–Bernoulli beam theory
+- Beam length: **0.50 m**
+- Transverse load: **≈ 17.9 kN**  
+- Material: **Steel**
+- Young’s modulus: **200 GPa**
+- Max allowable tip deflection: **0.01 m (2% of beam length)**
+- Beam acts as a cantilever: fixed at P1, free at tip
+- Euler–Bernoulli small-deflection theory applies
+
+---
 
 ## Deflection Analysis
 
-For a cantilever beam with a point load P at the free end, the maximum tip deflection is
+For a cantilever with a point load at the free end:
 
-- **δ_max = (P · L³) / (3 · E · I)**
+- max deflection = (load × L³) ÷ (3 × E × I)
 
-where:
+Rearranged for required stiffness:
 
-- \( P \) = transverse load  
-- \( L \) = beam length  
-- \( E \) = Young’s modulus  
-- \( I \) = second moment of area about the bending axis  
-
-Solving for the required second moment of area:
-
-- **I_req = (P · L³) / (3 · E · δ_max)**
+- I_required = (load × L³) ÷ (3 × E × allowable deflection)
 
 Using:
 
-- \( P = 17.9 \times 10^3\ \text{N} \)  
-- \( L = 0.50\ \text{m} \)  
-- \( E = 200 \times 10^9\ \text{Pa} \)  
-- \( \delta_{\max} = 0.01\ \text{m} \)
+- load = 17.9 × 10³ N  
+- L = 0.50 m  
+- E = 200 × 10⁹ Pa  
+- allowable deflection = 0.01 m  
 
-gives:
+Results in:
 
-- **I_req ≈ 3.7 × 10⁻⁷ m⁴**
+- **I_required ≈ 3.7 × 10⁻⁷ m⁴**
 
-Any beam design must have **I ≥ I_req**.
+Any selected beam cross-section must exceed this value.
 
-## Beam Cross-Section Comparison
+---
 
-### Option 1 – Solid Rectangular Bar (Not Selected)
+## Cross-Section Selection
 
-A solid bar sized to satisfy \( I \ge I_{\text{req}} \) can meet the stiffness requirement but is heavy  
-(roughly **9.4 kg** for a 0.5 m bar in a reasonable size range).
+### Solid Rectangular Bar (Rejected)
 
-### Option 2 – Hollow Rectangular Tube (Selected)
+A solid bar can meet stiffness but becomes **too heavy** (approx. 9.4 kg for a 0.5 m length).
 
-Final choice:
+---
 
-- Outer dimensions: **40 mm × 80 mm**  
-- Wall thickness: **3 mm**  
-- Material: **steel**
+### Hollow Rectangular Tube (Selected)
 
-This produces:
+Final chosen cross-section:
 
-- Second moment of area: **I ≈ 5.6 × 10⁻⁷ m⁴** (greater than I_req)  
-- Predicted tip deflection:
+- Outer dimensions: **40 mm × 80 mm**
+- Wall thickness: **3 mm**
+- Material: steel
 
-  - **δ ≈ 6.7 mm**, which is less than **10 mm** (2% of L)
+Properties of this tube:
 
-- Cross-sectional area: about **6.84 × 10⁻⁴ m²**  
-- Mass per meter: ≈ **5.4 kg/m**  
-- Mass of the 0.5 m beam: ≈ **2.7 kg**
+- Second moment of area: **≈ 5.6 × 10⁻⁷ m⁴**  
+- Predicted tip deflection: **≈ 6.7 mm** (< 10 mm limit)  
+- Mass of 0.5 m beam: **≈ 2.7 kg**
 
-So the hollow tube is more than **three times lighter** than a solid bar that meets the same stiffness requirement.
+This design is over **three times lighter** than a comparable solid bar while satisfying stiffness constraints.
 
-## Final Step 2 Beam Design
+---
 
-The figure below shows the final mechanism with the flexible beam and selected rectangular tube cross-section.
+## Final Flexible Beam Design (Step 2)
 
-<img src="/assets/images/step2-mech.png" alt="Final Step 2 Beam Design" />
+![Flexible Beam Mechanism](/assets/images/step2-mech.png)
+
+---
+
+# Integrated Summary
+
+This project combines rigid-body mechanism design with structural beam analysis:
+
+- Step 1 establishes an ideal mechanism capable of lifting **17.9 kN** using an IMA55 actuator and optimal geometry.
+- Step 2 ensures the bar is realistically modeled as a deformable beam, selects a **40 × 80 × 3 mm steel tube**, and verifies deflection remains under **2% of beam length**.
+- The final design is:
+  - Structurally efficient  
+  - Mass-optimized  
+  - Capable of supporting the required load  
+  - Consistent with practical engineering design principles  
+
+This unified process produces a mechanically functional and physically feasible lifting mechanism.
