@@ -3,7 +3,7 @@ layout: project
 title: Lifting Mechanism Design
 description: A complete lifting mechanism design beginning with rigid-body statics and concluding with flexible-beam structural optimization.
 technologies: [Mechanism Design, Statics, Structural Analysis, Beam Theory, Materials, CAD]
-image: /assets/images/step-1mech.png
+image: /assets/images/actuator.jpg
 ---
 
 # Overview
