@@ -93,7 +93,7 @@ This corresponds to lifting roughly **1.8 metric tons** under ideal rigid-bar be
 
 ## Final Rigid Mechanism (Step 1)
 
-![Rigid-Bar Mechanism](/assets/images/step-1mech.png)
+![Rigid-Bar Mechanism]({{ '/assets/images/step-1mech.png' | relative_url }})
 
 This establishes the geometry used in Step 2.
 
@@ -168,7 +168,8 @@ This design is over **three times lighter** than a comparable solid bar while sa
 
 ## Final Flexible Beam Design (Step 2)
 
-![Flexible Beam Mechanism](/assets/images/step-2mech.png)
+![Flexible Beam Mechanism]({{ '/assets/images/step-2mech.png' | relative_url }})
+
 
 ---
 
