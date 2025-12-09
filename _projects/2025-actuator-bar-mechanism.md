@@ -81,6 +81,4 @@ This corresponds to lifting approximately **1.8 metric tons**, assuming the bar 
 ## Final Mechanism Design
 
 Below is the final CAD-style schematic used for Step 1:
-
-```html
 <img src="/assets/images/step1-mech.png" alt="Final Step 1 Mechanism" />

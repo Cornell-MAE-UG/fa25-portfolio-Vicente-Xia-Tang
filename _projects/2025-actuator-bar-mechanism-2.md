@@ -101,6 +101,4 @@ This is a **3× improvement in mass efficiency** relative to the solid bar.
 ## Final Step 2 Beam Design
 
 The following diagram shows the mechanism with the flexible beam and selected hollow cross-section:
-
-```html
 <img src="/assets/images/step2-mech.png" alt="Final Step 2 Beam Design" />
