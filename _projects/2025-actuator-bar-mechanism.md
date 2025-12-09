@@ -3,7 +3,7 @@ layout: project
 title: Lifting Mechanism Design
 description: A complete lifting mechanism design beginning with rigid-body statics and concluding with flexible-beam structural optimization.
 technologies: [Mechanism Design, Statics, Structural Analysis, Beam Theory, Materials, CAD]
-image: /assets/images/step1-mech.png
+image: /assets/images/step-1mech.png
 ---
 
 # Overview
@@ -93,7 +93,7 @@ This corresponds to lifting roughly **1.8 metric tons** under ideal rigid-bar be
 
 ## Final Rigid Mechanism (Step 1)
 
-![Rigid-Bar Mechanism](/assets/images/step1-mech.png)
+![Rigid-Bar Mechanism](/assets/images/step-1mech.png)
 
 This establishes the geometry used in Step 2.
 
@@ -168,7 +168,7 @@ This design is over **three times lighter** than a comparable solid bar while sa
 
 ## Final Flexible Beam Design (Step 2)
 
-![Flexible Beam Mechanism](/assets/images/step2-mech.png)
+![Flexible Beam Mechanism](/assets/images/step-2mech.png)
 
 ---
 
