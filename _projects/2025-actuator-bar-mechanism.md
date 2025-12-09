@@ -19,8 +19,6 @@ The goal is to **lift the maximum possible weight** to the **highest reachable h
 
 For this design, I selected the **Tolomatic IMA55 (roller screw RN05, 3-stack motor)**, which provides a **maximum thrust of ~35.8 kN**.
 
----
-
 ## Constraints & Objectives
 
 **Geometric Constraints**
@@ -38,8 +36,6 @@ For this design, I selected the **Tolomatic IMA55 (roller screw RN05, 3-stack mo
 2. Achieve the maximum vertical elevation of the bar tip  
 3. Maintain a **single-degree-of-freedom** mechanism driven by actuator extension  
 
----
-
 ## Degrees of Freedom
 
 The system consists of:
@@ -55,8 +51,6 @@ Three pin joints:
 - **P3:** Bar ↔ Actuator  
 
 Since the actuator length is the only independent variable, the mechanism has **1 DOF**.
-
----
 
 ## Static Analysis (Rigid-Bar Assumption)
 
@@ -83,8 +77,6 @@ W_{\max} \approx 17.9\ \text{kN}
 \]
 
 This corresponds to lifting approximately **1.8 metric tons**, assuming the bar is perfectly rigid.
-
----
 
 ## Final Mechanism Design
 

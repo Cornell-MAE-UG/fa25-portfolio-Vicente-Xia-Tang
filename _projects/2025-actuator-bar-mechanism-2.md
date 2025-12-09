@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Step 2 – Flexible Beam Design and Deflection Analysis
+title: Flexible Beam Design and Deflection Analysis
 description: Beam bending analysis to enforce stiffness constraints and select a mass-efficient beam cross-section.
 technologies: [Beam Theory, Structural Analysis, CAD, Materials]
 image: /assets/images/step2-mech.png
@@ -17,8 +17,6 @@ The goals are to:
 4. Present a finalized beam design drawing
 
 The mechanism geometry and actuator locations remain identical to Step 1.
-
----
 
 ## Assumptions
 
@@ -40,8 +38,6 @@ The mechanism geometry and actuator locations remain identical to Step 1.
   \delta_{\max} \le 0.01\ \text{m} = 2\%L
   \]
 - Euler–Bernoulli beam theory
-
----
 
 ## Deflection Analysis
 
@@ -69,8 +65,6 @@ I_{\text{req}} \approx 3.7\times10^{-7}\ \text{m}^4
 \]
 
 Any beam design must satisfy **I ≥ I_req**.
-
----
 
 ## Beam Cross-Section Comparison
 
@@ -103,8 +97,6 @@ m \approx 2.7\ \text{kg}
 \]
 
 This is a **3× improvement in mass efficiency** relative to the solid bar.
-
----
 
 ## Final Step 2 Beam Design
 
