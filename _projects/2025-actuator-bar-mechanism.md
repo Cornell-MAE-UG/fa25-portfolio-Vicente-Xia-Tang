@@ -1,89 +1,94 @@
 ---
 layout: project
 title: Rigid-Bar Lifting Mechanism Design
-description: Static analysis and mechanism layout for a 1-DOF lifting system within a constrained design space.
+description: Static equilibrium–based mechanism design for lifting within a constrained 150 cm × 50 cm workspace.
 technologies: [Mechanism Design, Statics, CAD, Actuators]
 image: /assets/images/step1-mech.png
 ---
 
 ## Problem Definition
 
-The design task was to construct a 2D lifting mechanism that fits within a **150 cm × 50 cm** rectangular design space.  
-The mechanism must include:
+The objective for Step 1 is to design a 2D lifting mechanism inside a **150 cm × 50 cm** design space using:
 
-- A **rigid bar** of fixed length  
-- **Three pin supports**, with at least two connected to ground  
-- A **Tolomatic linear actuator** selected from an online catalog  
-- The ability to **lift the maximum possible weight** to the **highest possible height**
+- A **rigid bar** of fixed length
+- **Three pin supports**, two of which must be grounded
+- A **linear actuator** chosen from the Tolomatic online catalog (using only maximum force values)
+- Rigid supports and rigid actuator assumptions
 
-For this design, I selected the **Tolomatic IMA55 (roller screw RN05, 3-stack motor)** with a **maximum thrust of ~35.8 kN**.
+The goal is to **lift the maximum possible weight** to the **highest reachable height** within the vertical constraint.
 
-The objective is to treat the bar as rigid and finalize a mechanism based on static equilibrium analysis.
+For this design, I selected the **Tolomatic IMA55 (roller screw RN05, 3-stack motor)**, which provides a **maximum thrust of ~35.8 kN**.
+
+---
 
 ## Constraints & Objectives
 
-**Geometric constraints**
+**Geometric Constraints**
 
-- Entire mechanism must remain inside a **150 cm (width) × 50 cm (height)** workspace  
-- Ground reference line is the lower boundary at *y = 0*  
-- Bar length chosen as **L = 50 cm**  
-- Actuator ground pin placed at **(35 cm, 0 cm)**  
-- Bar base pin placed at **(0 cm, 0 cm)**  
-- Bar–actuator joint located at the midpoint of the bar (**25 cm from the base**)
+- Workspace: 150 cm (width) × 50 cm (height)
+- Bar length chosen as **L = 50 cm**
+- Ground pins placed at:
+  - P1 = (0 cm, 0 cm)
+  - P2 = (35 cm, 0 cm)
+- Actuator-to-bar joint (P3) positioned at the **midpoint** of the bar (25 cm from P1)
 
 **Objectives**
 
-1. Maximize the **lifted weight**  
-2. Achieve the **highest vertical bar tip position**, up to the 50 cm height limit  
-3. Use a **1-DOF mechanism** driven only by actuator extension  
+1. Maximize the lifted load capacity  
+2. Achieve the maximum vertical elevation of the bar tip  
+3. Maintain a **single-degree-of-freedom** mechanism driven by actuator extension  
+
+---
 
 ## Degrees of Freedom
 
-This mechanism consists of three rigid bodies:
+The system consists of:
 
-1. The ground  
-2. The rigid bar  
-3. The actuator (treated as a two-force member)
+- A rigid body (bar)
+- A two-force actuator
+- Ground
 
-Pin joints:
+Three pin joints:
 
 - **P1:** Ground ↔ Bar  
 - **P2:** Ground ↔ Actuator  
-- **P3:** Bar ↔ Actuator (also the load application point)
+- **P3:** Bar ↔ Actuator  
 
-Because the actuator length is the only independent input, the system has **1 degree of freedom (DOF)**.
+Since the actuator length is the only independent variable, the mechanism has **1 DOF**.
+
+---
 
 ## Static Analysis (Rigid-Bar Assumption)
 
-The actuator attaches to the bar at **mid-span**, so the moment arm ratio is:
+The actuator applies force at mid-span:
 
 \[
 \frac{a}{L} = \frac{25\ \text{cm}}{50\ \text{cm}} = 0.5
 \]
 
-Taking moments about the bar pivot (P1):
+Taking moments about the pivot P1:
 
 \[
 F_a \cdot a = W \cdot L
 \]
 
-Solving for maximum liftable weight:
+Solving for the maximum supported load:
 
 \[
-W_{\max} = \frac{a}{L} F_a = 0.5 \cdot 35.8\ \text{kN} \approx 17.9\ \text{kN}
+W_{\max} = \frac{a}{L} F_a = 0.5 \cdot 35.8\text{ kN}
 \]
 
-This corresponds to a mass of roughly **1.8 metric tons**, assuming no structural deformation.
+\[
+W_{\max} \approx 17.9\ \text{kN}
+\]
 
-This geometry was selected because:
+This corresponds to lifting approximately **1.8 metric tons**, assuming the bar is perfectly rigid.
 
-- The actuator has a favorable moment arm  
-- The bar can fully rotate to reach the 50 cm height limit  
-- All supports remain within the design boundaries  
+---
 
-## Final Mechanism (Rigid)
+## Final Mechanism Design
 
-The following CAD-style PNG shows the complete rigid-bar mechanism, including the actuator, load point, and pin locations.
+Below is the final CAD-style schematic used for Step 1:
 
 ```html
-<img src="/assets/images/step-1mech.png" alt="Final Step 1 Mechanism" />
+<img src="/assets/images/step1-mech.png" alt="Final Step 1 Mechanism" />
